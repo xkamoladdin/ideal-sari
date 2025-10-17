@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDEAL SARI</title>
+  <link href="./output.css" rel="stylesheet">
+</head>
+<body class="">
+
+  <div class="bg-main-color">
+  <nav class="container flex justify-between py-[20px] items-center mb-10 ">
+    <a href="./index.html" class="text-[40px] font-bold text-white"><i>IDEAL SARI</i></a>
+    <ul class="flex gap-4 text-indigo-600">
+      <li><a href="./index.html" class="hover:underline">Bosh sahifa</a></li>
+      <li><a href="./products.html" class="hover:underline">Mahsulotlar</a></li>
+      <li><a href="./admin.html" class="hover:underline">Admin</a></li>
+    </ul>
+  </nav>
+  </div>
+
+
+  <div id="product-list" class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <p id="loading" class="text-center text-gray-500 col-span-full">Mahsulotlar yuklanmoqda...</p>      
+  </div>
+
+  <script type="module" src="./js/products.js"></script>
+</body>
+</html>
