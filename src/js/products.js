@@ -1,7 +1,7 @@
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, getDocs } 
+import { getFirestore, collection, getDocs }
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -112,8 +112,8 @@ function renderProducts(products) {
 
     const card = document.createElement("div");
     card.className = `
-      w-[250px] bg-white border border-red-500 rounded-2xl overflow-hidden shadow-md 
-      transition-all duration-300 
+      w-[250px] bg-white border border-red-500 rounded-2xl overflow-hidden shadow-md
+      transition-all duration-300
     `;
 
     // <span class="inline-block bg-red-100 text-red-600 text-xs font-semibold px-3 py-1 rounded-full">
@@ -124,7 +124,7 @@ function renderProducts(products) {
         <img src="${product.image}" class="w-full h-[200px] object-contain bg-white p-2">
         <div class="absolute top-2 right-2 flex items-center gap-2">
           <div class="bg-red-500 text-white text-xs px-2 py-1 rounded-full shadow-md">-${product.discount}%</div>
-          <button class="like-btn text-2xl ${isLiked ? "text-red-600" : "text-gray-400"} hover:scale-110 transition-all">❤️</button>
+          <button class="like-btn text-2xl ${isLiked ? "text-red-600" : "text-gray-400"}"><i class="fa-regular fa-heart"></i></button>
         </div>
       </div>
       <div class="p-4 text-center space-y-2">
@@ -133,8 +133,8 @@ function renderProducts(products) {
           <del class="text-gray-400 text-sm">${product.oldPrice.toLocaleString()} so'm</del>
         </div>
         <h3 class="text-lg font-semibold text-gray-800 line-clamp-1">${product.title}</h3>
-        <button 
-          class="detail-btn mt-2 w-full py-2 bg-red-600 text-white font-semibold rounded-full 
+        <button
+          class="detail-btn mt-2 w-full py-2 bg-red-600 text-white font-semibold rounded-full
           hover:bg-white hover:text-red-600 border-2 border-red-600 transition-all duration-300">
           Batafsil
         </button>
@@ -187,13 +187,3 @@ categoryFilter?.addEventListener("change", applyFilters);
 priceSort?.addEventListener("change", applyFilters);
 
 loadProducts();
-
-
-
-
-
-
-
-
-
-
