@@ -1,3 +1,5 @@
+
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } 
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -12,7 +14,6 @@ const firebaseConfig = {
   measurementId: "G-0380YDYBZ1"
 };
 
-
 const correctPassword = "0000";
 const userPassword = prompt("Admin panelga kirish uchun parolni kiriting:");
 
@@ -23,6 +24,9 @@ const form = document.getElementById("productForm");
 const titleInput = document.getElementById("title");
 const priceInput = document.getElementById("price");
 const imageInput = document.getElementById("image");
+const categoryInput = document.getElementById("category");
+const descInput = document.getElementById("description");
+const dateInput = document.getElementById("date");
 const adminProducts = document.getElementById("admin-products");
 
 form.addEventListener("submit", async (e) => {
@@ -32,6 +36,9 @@ form.addEventListener("submit", async (e) => {
     title: titleInput.value,
     price: Number(priceInput.value),
     image: imageInput.value,
+    category: categoryInput.value,
+    description: descInput.value,
+    date: dateInput.value,
   };
 
   try {
@@ -50,12 +57,17 @@ async function renderProducts() {
   querySnapshot.forEach((docSnap) => {
     const product = docSnap.data();
     const card = document.createElement("div");
-    card.className = "bg-white p-4 shadow rounded";
+    card.className = "bg-white p-4 shadow rounded border border-gray-100 hover:shadow-lg transition-all";
+
     card.innerHTML = `
       <img src="${product.image}" class="w-full h-48 object-cover rounded mb-3">
-      <h3 class="font-semibold">${product.title}</h3>
-      <p class="text-gray-600 mb-2">${product.price.toLocaleString()} so'm</p>
-      <button class="bg-red-500 text-white px-3 py-1 rounded delete-btn" data-id="${docSnap.id}">
+      <h3 class="font-semibold text-gray-800">${product.title}</h3>
+      <p class="text-gray-600 mb-1">${product.price.toLocaleString()} so'm</p>
+      <span class="inline-block bg-indigo-100 text-indigo-600 text-xs font-semibold px-2 py-1 rounded-full mb-3">
+        ${product.category || "Kategoriya yo‘q"}
+      </span>
+      <p class="text-sm text-gray-500 mb-1">📅 ${product.date || "Sana kiritilmagan"}</p>
+      <button class="bg-red-500 text-white px-3 py-1 rounded delete-btn w-full mt-2 hover:bg-red-600" data-id="${docSnap.id}">
         O‘chirish
       </button>
     `;
@@ -73,13 +85,11 @@ async function renderProducts() {
   });
 }
 
-
 if (userPassword === correctPassword) {
   document.getElementById("adminBody").classList.remove("hidden");
 } else {
   alert("Noto‘g‘ri parol! Bosh sahifaga qaytmoqdasiz.");
   window.location.href = "./index.html";
 }
-
 
 renderProducts();

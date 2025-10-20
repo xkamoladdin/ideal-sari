@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -6,26 +8,28 @@
   <title>Admin Panel</title>
   <link href="./output.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 p-8 min-h-screen hidden" id="adminBody">
+<body class="bg-gray-50 p-8 min-h-screen hidden container" id="adminBody">
   <a href="./index.html" class="text-indigo-600 underline">← Bosh sahifa</a>
   <h1 class="text-3xl font-bold text-center text-indigo-700 mb-8">Admin Panel</h1>
 
-  <form id="productForm" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow mb-10">
-    <input type="text" id="title" placeholder="Mahsulot nomi" class="w-full border p-2 mb-4 rounded" required>
-    <input type="number" id="price" placeholder="Narxi (so'mda)" class="w-full border p-2 mb-4 rounded" required>
-    <input type="text" id="image" placeholder="Rasm URL manzili" class="w-full border p-2 mb-4 rounded" required>
-
-    <button type="submit" id="submitBtn" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">
-      Mahsulotni qo‘shish
+  <form id="productForm" class="space-y-3 w-[500px] text-center mx-auto">
+    <input id="title" type="text" placeholder="Mahsulot nomi" class="border p-2 w-full rounded" required>
+    <input id="price" type="number" placeholder="Narxi" class="border p-2 w-full rounded" required>
+    <input id="image" type="text" placeholder="Rasm URL" class="border p-2 w-full rounded" required>
+    <input id="category" type="text" placeholder="Kategoriya" class="border p-2 w-full rounded">
+    <input id="date" type="date" class="border p-2 w-full rounded">
+    <textarea id="description" placeholder="Mahsulot tavsifi..." class="border p-2 w-full rounded"></textarea>
+    <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 w-full">
+      Qo‘shish
     </button>
   </form>
+  
 
   <div class="max-w-4xl mx-auto">
     <h2 class="text-2xl font-semibold mb-4 text-indigo-700 text-center">Mahsulotlar ro‘yxati</h2>
     <div id="admin-products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
     </div>
   </div>
-
 
   <script type="module" src="./js/admin.js"></script>
 </body>

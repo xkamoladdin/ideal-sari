@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'main-color': '#ff0000',
+      },
+    },
     container: {
       center: true,
       padding: '15px'
@@ -13,10 +17,7 @@ module.exports = {
       'lg': '1024px',
       'xl': '1280px',
     },
-    colors: {
-      'main-color': '#ff0000'
-    }
-  },
+  },  
   plugins: [],
 }
 

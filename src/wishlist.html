@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yoqtirgan mahsulotlar</title>
+  <link href="./output.css" rel="stylesheet">
+</head>
+<body class="">
+    <div class="bg-main-color">
+        <nav class="container mx-auto flex flex-wrap justify-between items-center py-5 px-4">
+          <!-- Logo -->
+          <a href="./index.html" class="text-[32px] sm:text-[40px] font-bold text-white tracking-wide">
+            <i>IDEAL SARI</i>
+          </a>
+    
+          <!-- Menu -->
+          <ul class="flex flex-wrap gap-4 text-indigo-100 text-lg font-medium">
+            <li><a href="./index.html" class="hover:underline hover:text-white transition">Bosh sahifa</a></li>
+            <li><a href="./products.html" class="hover:underline hover:text-white transition">Mahsulotlar</a></li>
+            <li><a href="./about.html" class="hover:underline hover:text-white transition">About</a></li>
+            <li><a href="./admin.html" class="hover:underline hover:text-white transition">Admin</a></li>
+            <li><a href="./wishlist.html" class="hover:underline hover:text-white transition">Istaklar</a></li>
+          </ul>
+        </nav>
+      </div>
+  <div id="wishlistContainer" class="container mt-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+
+  <script>
+    const wishlistContainer = document.getElementById("wishlistContainer");
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    if (wishlist.length === 0) {
+      wishlistContainer.innerHTML = "<p class='text-center text-gray-500 col-span-full'>Siz hali hech qanday mahsulotni yoqtirmagansiz 😅</p>";
+    } else {
+        wishlist.forEach((product) => {
+  const card = document.createElement("div");
+  card.className = "bg-white border border-red-500 rounded-2xl overflow-hidden shadow-md";
+  const isLiked = true; // Wishlistda bo‘lgani uchun doim yoqqan holatda bo‘ladi
+
+  card.innerHTML = `
+    <div class="relative">
+      <img src="${product.image}" class="w-full h-[200px] object-contain bg-white p-2">
+      <div class="absolute top-2 right-2 flex items-center gap-2">
+        <div class="bg-red-500 text-white text-xs px-2 py-1 rounded-full shadow-md">
+          -${product.discount || 0}%
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="p-4 text-center space-y-2">
+      <div>
+        <p class="text-red-600 text-xl font-bold">${product.price.toLocaleString()} so'm</p>
+        <del class="text-gray-400 text-sm">${product.oldPrice?.toLocaleString() || ""}</del>
+      </div>
+
+      
+      <h3 class="text-lg font-semibold text-gray-800 line-clamp-1">${product.title}</h3>
+
+      <button 
+        class="remove-btn mt-2 w-full py-2 bg-red-600 text-white font-semibold rounded-full 
+        hover:bg-white hover:text-red-600 border-2 border-red-600 transition-all duration-300">
+        O‘chirish
+      </button>
+    </div>
+  `;
+
+  // <span class="inline-block bg-red-100 text-red-600 text-xs font-semibold px-3 py-1 rounded-full">
+  //   ${product.category || "Kategoriya yo‘q"}
+  // </span>
+  card.querySelector(".remove-btn").addEventListener("click", () => {
+    const updatedWishlist = wishlist.filter(item => item.id !== product.id);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    card.remove();
+  });
+
+  wishlistContainer.appendChild(card);
+});
+
+    }
+  </script>
+</body>
+</html>
