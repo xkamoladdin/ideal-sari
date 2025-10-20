@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -6,10 +8,11 @@
   <title>IDEAL SARI</title>
   <link href="./output.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
 </head>
-<body class="">
 
+<body class="bg-gray-50">
+
+  <!-- Navbar -->
   <div class="bg-main-color">
     <nav class="container mx-auto flex flex-wrap justify-between items-center py-5 px-4">
       <a href="./index.html" class="text-[32px] sm:text-[40px] font-bold text-white tracking-wide">
@@ -17,36 +20,35 @@
       </a>
       <ul class="flex flex-wrap gap-4 text-indigo-100 text-lg font-medium items-center">
         <li><a href="./index.html" class="hover:underline hover:text-white transition">Bosh sahifa</a></li>
-        <!-- <li><a href="./products.html" class="hover:underline hover:text-white transition">Mahsulotlar</a></li> -->
         <li><a href="./about.html" class="hover:underline hover:text-white transition">About</a></li>
         <li><a href="./admin.html" class="hover:underline hover:text-white transition">Admin</a></li>
         <li><a href="./wishlist.html" class="hover:underline hover:text-white pl-[20px] transition"><i class="fa-regular fa-heart"></i></a></li>
       </ul>
     </nav>
   </div>
+
+  <!-- Filter qismi -->
   <div class="shadow">
     <div class="container flex flex-col md:flex-row justify-between items-center bg-white py-4 mb-8 gap-4">
       <input id="searchInput" type="text" placeholder="Mahsulot nomi bo‘yicha qidirish..."
-      class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/3 focus:outline-none focus:ring-2 focus:ring-red-500">
+        class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/3 focus:outline-none focus:ring-2 focus:ring-red-500">
 
-    <select id="categoryFilter" class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500">
-      <option value="">Barcha toifalar</option>
-    </select>
+      <select id="categoryFilter" class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500">
+        <option value="">Barcha toifalar</option>
+      </select>
 
-    <select id="priceSort" class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500">
-      <option value="">Narx tartibi</option>
-      <option value="asc">Arzonidan qimmatga</option>
-      <option value="desc">Qimmatidan arzonga</option>
-    </select>
-  </div>
-</div>
-
-  <div id="product-list" class="container flex justify-between flex-wrap gap-2">
-    <p id="loading" class="text-center text-gray-500 col-span-full">Mahsulotlar yuklanmoqda...</p>
+      <select id="priceSort" class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/4 focus:outline-none focus:ring-2 focus:ring-red-500">
+        <option value="">Narx tartibi</option>
+        <option value="asc">Arzonidan qimmatga</option>
+        <option value="desc">Qimmatidan arzonga</option>
+      </select>
+    </div>
   </div>
 
-
-
+  <!-- Mahsulotlar bo‘limlari -->
+  <div id="categorySections" class="container mx-auto px-4 pb-10">
+    <p id="loading" class="text-center text-gray-500">Mahsulotlar yuklanmoqda...</p>
+  </div>
 
   <script type="module" src="./js/products.js"></script>
 </body>
